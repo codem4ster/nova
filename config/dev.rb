@@ -1,0 +1,1 @@
+App::Conf.dev {}
