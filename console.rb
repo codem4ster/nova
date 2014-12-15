@@ -7,7 +7,7 @@ require $neo_dir+'/neo'
 
 Neo.app_dir = '.'
 Neo.dir = $neo_dir
-Neo.init
+Neo.run
 
 
 raise 'You must give a command to execute --' if ARGV[0].nil?

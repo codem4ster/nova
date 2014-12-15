@@ -5,7 +5,7 @@ class Index
     Neo.app_dir = $app_dir
     Neo.dir = $neo_dir
     Neo.server_vars = env
-    Neo.init
+    Neo.run
     Neo.http_response
   end
 end
