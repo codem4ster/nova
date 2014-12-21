@@ -1,5 +1,6 @@
 App::Conf.default(
   env: 'dev',
+  gem_path: '/home/cm/.rvm/gems/ruby-2.1.4@global/',
   default_module: 'site',
   lang: 'TrTr',
   routes: {
