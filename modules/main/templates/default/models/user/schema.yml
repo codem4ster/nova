@@ -1,0 +1,7 @@
+fields:
+  username:
+    label: "uea"
+    type: "uieauiea"
+    validations:
+      required: {}
+      length: {min: 3, max: 4}
