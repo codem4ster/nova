@@ -41,13 +41,11 @@ GEM
       gherkin (~> 2.12)
       multi_json (>= 1.7.5, < 2.0)
       multi_test (>= 0.1.1)
-    daemons (1.1.9)
     debase (0.1.1)
       debase-ruby_core_source
     debase-ruby_core_source (0.7.5)
     diff-lcs (1.2.5)
     docile (1.1.5)
-    eventmachine (1.0.4)
     execjs (2.2.2)
     ffi (1.9.6)
     gherkin (2.12.2)
@@ -66,6 +64,7 @@ GEM
       cmdparse
       nokogiri (>= 1.5.0)
       rubyzip (= 0.9.9)
+    kgio (2.9.2)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.4.3)
@@ -87,6 +86,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    raindrops (0.13.0)
     rake (10.4.2)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
@@ -127,10 +127,6 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    thin (1.6.3)
-      daemons (~> 1.0, >= 1.0.9)
-      eventmachine (~> 1.0)
-      rack (~> 1.0)
     thread_safe (0.3.4)
     tilt (1.4.1)
     twitter_oauth (0.4.94)
@@ -142,6 +138,10 @@ GEM
     uglifier (2.6.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unicorn (4.8.3)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
     websocket (1.0.7)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -174,6 +174,6 @@ DEPENDENCIES
   sass
   selenium-webdriver
   simplecov
-  thin
   twitter_oauth
   uglifier
+  unicorn

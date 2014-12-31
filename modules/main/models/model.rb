@@ -1,5 +1,6 @@
 class Main::Models::Model < Neo::Database::Model
 	ModelQuery = Main::Models::ModelQuery
+	PropertyQuery = Main::Models::PropertyQuery
 
 	attr_accessor :name
 
@@ -18,7 +19,7 @@ class Main::Models::Model < Neo::Database::Model
 	end
 
 	def get_property(property_name)
-		ModelQuery.new.with_property(property_name).find_one
+		PropertyQuery.new.with_name(property_name).with_model(self.name).find_one
 	end
 
 	def add_property(property_name, options)
@@ -31,7 +32,7 @@ class Main::Models::Model < Neo::Database::Model
 	end
 
 	def remove_property(property_name)
-
+		PropertyQuery.new.with_name(property_name).with_model(self.name).delete 'r'
 	end
 
 	def get_properties

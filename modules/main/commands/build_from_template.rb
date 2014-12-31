@@ -42,7 +42,8 @@ class Main::Commands::BuildFromTemplate < Main::Commands::BaseCommand
 			model = Model.get_by_name @name
 			fields = @schema[:fields] || {}
 			fields.each do |name, props|
-				model.add_property name, props
+				#model.add_property name, props
+				model.remove_property name
 			end
 		end
 	end
