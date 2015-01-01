@@ -10,4 +10,4 @@ fields:
     type: "textfield"
     validations:
       required: {}
-      length: {min: 3, max: 4}
+      length: {min: 5, max: 4}

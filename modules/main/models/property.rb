@@ -21,4 +21,18 @@ class Main::Models::Property < Neo::Database::Model
 		property
 	end
 
+	def update(options)
+		is_different = [:label, :type, :validations].any? {|key|
+			val = (key == :validations) ? options[key].to_json : options[key]
+			self.send(key) != val
+		}
+		if is_different
+			self.label = options[:label]
+			self.type = options[:type]
+			self.validations = options[:validations].to_json
+			self.save
+		end
+		self
+	end
+
 end

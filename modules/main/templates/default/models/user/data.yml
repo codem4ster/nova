@@ -1,0 +1,10 @@
+user:
+  user1:
+    username: 'seizma'
+    password: '123456'
+  user2:
+    username: 'seyma'
+    password: 'kaoskaos'
+  user3:
+    username: 'mustafa değil'
+    password: 'uieauiea'

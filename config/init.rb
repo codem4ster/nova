@@ -11,7 +11,7 @@ App::Conf.default(
     api: %w( /api / api:api:index get ),
   },
   db: {
-    name: 'DbNova',
+    name: '`>Nova`',
     port: 7474
   },
   mail: {

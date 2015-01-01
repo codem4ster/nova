@@ -1,6 +1,7 @@
 class Main::Models::Model < Neo::Database::Model
 	ModelQuery = Main::Models::ModelQuery
 	PropertyQuery = Main::Models::PropertyQuery
+	Data = Main::Models::Data
 
 	attr_accessor :name
 
@@ -24,7 +25,9 @@ class Main::Models::Model < Neo::Database::Model
 
 	def add_property(property_name, options)
 		property = get_property(property_name)
-		unless property
+		if property
+			property.update options
+		else
 			property = Property.create_with_name property_name, options
 			self.relate_to property, 'HasProperty'
 		end
@@ -36,26 +39,41 @@ class Main::Models::Model < Neo::Database::Model
 	end
 
 	def get_properties
-
+		PropertyQuery.new.with_model(self.name).find
 	end
 
 	def set_properties(properties)
 		properties.each { |property| add_property property[:name], property[:options] }
 	end
 
-	def add_data(data)
+	def create_data(values, key=nil)
+		if key
+			data = DataQuery.new.with_key(key).find_one
+			unless data
+				data = Data.new
+				data.key = key
+				data.save
+			end
+		else
+			data = Data.new
+			data.save
+		end
 
+		values.each do |property, value|
+			data.set_value property, value
+		end
+		self.relate_to data, 'HasData'
 	end
 
 	def remove_data(data)
 
 	end
 
-	def get_datas
+	def update_data(data, values)
 
 	end
 
-	def set_datas(datas)
+	def get_datas
 
 	end
 
