@@ -17,6 +17,10 @@ class Main::Models::Data < Neo::Database::Model
 		ValueQuery.new.belongs_to_data(self).belongs_to_property(property).find_one
 	end
 
+	def has_data?(data)
+		DataQuery.new.with_data(data.key).set_return('COUNT(r)').get > 0
+	end
+
 	def set_value(property, value_content)
 		value = get_value property
 		if value

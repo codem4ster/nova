@@ -21,6 +21,10 @@ class Main::Models::Property < Neo::Database::Model
 		property
 	end
 
+	def has_data?(data)
+		PropertyQuery.new.with_name(self.name).with_data(data.key).set_return('COUNT(r)').get > 0
+	end
+
 	def update(options)
 		is_different = [:label, :type, :validations].any? {|key|
 			val = (key == :validations) ? options[key].to_json : options[key]

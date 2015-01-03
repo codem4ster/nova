@@ -1,6 +1,7 @@
 class Main::Models::Model < Neo::Database::Model
 	ModelQuery = Main::Models::ModelQuery
 	PropertyQuery = Main::Models::PropertyQuery
+	DataQuery = Main::Models::DataQuery
 	Data = Main::Models::Data
 
 	attr_accessor :name
@@ -62,7 +63,23 @@ class Main::Models::Model < Neo::Database::Model
 			relate = true
 		end
 		values.each do |property, value|
-			data.set_value property, value
+			if value.kind_of? String and value.start_with? '@'
+				value = value[1..-1]
+				model, rel_key = value.split('|')
+				relation_data = DataQuery.new.with_model(model).with_key(rel_key).find_one
+				property.relate_to relation_data, 'HasData' unless property.has_data? relation_data
+				data.relate_to relation_data, 'HasData' unless data.has_data? relation_data
+			elsif value.kind_of? Array
+				model = value.pop
+				value.each do |v|
+					rel_key = v[1..-1]
+					relation_data = DataQuery.new.with_model(model).with_key(rel_key).find_one
+					property.relate_to relation_data, 'HasData' unless property.has_data? relation_data
+					data.relate_to relation_data, 'HasData' unless data.has_data? relation_data
+				end
+			else
+				data.set_value property, value
+			end
 		end
 		self.relate_to data, 'HasData' if relate
 	end
