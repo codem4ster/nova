@@ -1,4 +1,6 @@
 class Main::Commands::BuildFromTemplate < Main::Commands::BaseCommand
+	Transaction = Neo::Database::Transaction
+
 	def run(template)
 		@template_path = "#{Neo.app_dir}/modules/main/templates/#{template}"
 		unless File.directory? @template_path
@@ -6,7 +8,9 @@ class Main::Commands::BuildFromTemplate < Main::Commands::BaseCommand
 		end
 
 		require 'yaml'
-		build_models
+		Transaction.create do
+			build_models
+		end
 	end
 
 	def build_models
@@ -14,6 +18,8 @@ class Main::Commands::BuildFromTemplate < Main::Commands::BaseCommand
 		model_names = sub_directory_names_of model_dir
 		model_names.each do |model_name|
 			model = YamlModel.new model_name, model_dir
+			model.generate_db_model
+			model.insert_data
 		end
 	end
 
@@ -30,8 +36,6 @@ class Main::Commands::BuildFromTemplate < Main::Commands::BaseCommand
 			@dir = dir
 			@name = name
 			@path = "#{dir}/#{name}"
-			generate_db_model
-			insert_data
 		end
 
 		def extract_schema

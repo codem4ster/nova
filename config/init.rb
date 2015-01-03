@@ -12,7 +12,9 @@ App::Conf.default(
   },
   db: {
     name: '`>Nova`',
-    port: 7474
+    host: 'localhost',
+    port: 7474,
+    auth_key: '725a2651b5c0244f237ace48f8eec946'
   },
   mail: {
     from: 'burak@netvent.com',

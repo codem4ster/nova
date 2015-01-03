@@ -47,22 +47,24 @@ class Main::Models::Model < Neo::Database::Model
 	end
 
 	def create_data(values, key=nil)
+		relate = false
 		if key
 			data = DataQuery.new.with_key(key).find_one
 			unless data
 				data = Data.new
 				data.key = key
 				data.save
+				relate = true
 			end
 		else
 			data = Data.new
 			data.save
+			relate = true
 		end
-
 		values.each do |property, value|
 			data.set_value property, value
 		end
-		self.relate_to data, 'HasData'
+		self.relate_to data, 'HasData' if relate
 	end
 
 	def remove_data(data)
