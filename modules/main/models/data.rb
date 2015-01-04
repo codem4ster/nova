@@ -18,7 +18,7 @@ class Main::Models::Data < Neo::Database::Model
 	end
 
 	def has_data?(data)
-		DataQuery.new.with_data(data.key).set_return('COUNT(r)').get > 0
+		DataQuery.new.with_key(self.key).with_data(data.key).set_return('COUNT(r)').get > 0
 	end
 
 	def set_value(property, value_content)

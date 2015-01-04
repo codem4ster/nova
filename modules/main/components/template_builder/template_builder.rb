@@ -1,6 +1,4 @@
 class Main::Components::TemplateBuilder
-	YamlModel = Main::Components::TemplateBuilder::YamlModel
-	DataBuilder = Main::Components::TemplateBuilder::DataBuilder
 	Transaction = Neo::Database::Transaction
 
 	def initialize(template_name)
