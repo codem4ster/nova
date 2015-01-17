@@ -15,6 +15,11 @@ class Main::Components::TemplateBuilder
 		end
 	end
 
+	# Builds pages under templates/xx/pages
+	def build_pages
+		PageBuilder.new("#{@template_path}/pages").build
+	end
+
 	def build_models
 		model_dir = "#{@template_path}/models"
 		model_names = sub_directory_names_of model_dir
@@ -28,8 +33,8 @@ class Main::Components::TemplateBuilder
 	end
 
 	def sub_directory_names_of(path)
-		Dir["#{path}/*"].lazy.select{
-			|p| File.directory? p }.map{|p| File.basename p
-		}.to_a
+		Dir["#{path}/*"].lazy.select{|p|
+			File.directory? p
+		}.map{|p| File.basename p}.to_a
 	end
 end

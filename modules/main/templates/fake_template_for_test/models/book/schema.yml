@@ -1,0 +1,13 @@
+fields:
+  author:
+    label: "Yazar"
+    type: "@User"
+  publishers:
+    label: "Yayımcılar"
+    type: "@@User"
+  name:
+    label: "Adı"
+    type: "textfield"
+    validations:
+      required: {}
+      length: {min: 1, max: 4}

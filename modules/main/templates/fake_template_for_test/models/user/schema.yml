@@ -1,0 +1,13 @@
+fields:
+  username:
+    label: "Kullanıcı Adı"
+    type: "textfield"
+    validations:
+      required: {}
+      length: {min: 3, max: 4}
+  password:
+    label: "Şifre"
+    type: "textfield"
+    validations:
+      required: {}
+      length: {min: 5, max: 4}

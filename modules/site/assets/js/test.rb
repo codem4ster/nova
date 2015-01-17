@@ -1,3 +1,5 @@
+require './required'
+
 body = Element.find('body')
 puts body
 

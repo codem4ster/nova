@@ -1,0 +1,10 @@
+static:
+  error404:
+    title: 'Page not found'
+    another_option: 'another value'
+  home:
+    title: 'Main Page'
+    another_option: 'another home value'
+user:
+  login:
+    title: 'Login Page'

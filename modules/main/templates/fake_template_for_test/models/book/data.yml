@@ -1,0 +1,19 @@
+book:
+  book1:
+    author: "@user1"
+    publishers:
+      - "@user2"
+      - "@user3"
+    name: "Savaş ve barış"
+  book2:
+    author: "@user1"
+    publishers:
+      - "@user2"
+      - "@user3"
+    name: "Suç ve ceza"
+  book3:
+    author: "@user3"
+    publishers:
+      - "@user2"
+      - "@user1"
+    name: "Osmanın yollarında"
