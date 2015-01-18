@@ -1,6 +1,6 @@
 App::Conf.default(
   asset_sets: {
-    layout: %w(/layout/css/layout.sass /layout/js/jquery.js /layout/js/jsm.js)
+    opal: %w(/layout/js/opal-jquery.min.js)
   },
   assets: []
 )
