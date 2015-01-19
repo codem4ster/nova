@@ -1,4 +1,2 @@
-require 'layout/js/layout'
+puts 'osman'
 
-puts 'merhaba'
-alert User.new.name

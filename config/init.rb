@@ -1,5 +1,5 @@
 App::Conf.default(
-  env: 'prod',
+  env: 'dev',
   gem_path: '/home/cm/.rvm/gems/ruby-2.1.4@global/',
   default_module: 'site',
   default_template_engine: 'slim',
@@ -19,13 +19,13 @@ App::Conf.default(
     auth_key: '725a2651b5c0244f237ace48f8eec946'
   },
   mail: {
-    from: 'burak@netvent.com',
+    from: 'onurelibol@gmail.com',
     defaults: {
       address: 'smtp.gmail.com',
       port: 587,
-      domain: 'netvent.com',
-      user_name: 'burak@netvent.com',
-      password: '14534545',
+      domain: 'gmail.com',
+      user_name: 'onurelibol@gmail.com',
+      password: '123456',
       authentication: :plain,
       enable_starttls_auto: true
     }
