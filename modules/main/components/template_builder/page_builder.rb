@@ -5,12 +5,11 @@ class Main::Components::TemplateBuilder::PageBuilder
 	# @param pages_directory [String]
 	#   directory which includes pages under templates folder
 	def initialize(pages_directory)
-		Dir["#{pages_directory}/*"].reduce {} do |path|
+		Dir["#{pages_directory}/*"].reduce({}) do |path|
 			if File.directory? path
-				File.basename
 			end
 		end
-		tree = page_groups.reduce {} do |page_group|
+		tree = page_groups.reduce({}) do |page_group|
 			Dir["#{page_dir}/#{page_group}/*.haml"]
 		end
 	end
