@@ -1,4 +1,4 @@
-#\ -p 3000 -E development
+#\ -p 3000 -E production
 working_dir = File.dirname(__FILE__)
 Dir.chdir(working_dir)
 require './index'
