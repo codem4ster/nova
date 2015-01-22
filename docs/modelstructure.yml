@@ -5,10 +5,10 @@ Pages:
       - created_at
       - updated_at
     HasMany:
-      SubPageCategory: PageCategory
+      PageSubCategory: PageCategory
       Page: Page
     HasOne:
-      ParentPageCategory: PageCategory
+      PageParentCategory: PageCategory
 
   PageTypeCategory:
     HasProperties:
