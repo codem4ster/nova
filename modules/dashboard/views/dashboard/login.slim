@@ -1,0 +1,16 @@
+header.padded.center.bordered
+  | HEADER
+
+section#login.center.bordered.padded
+  h2 Login
+  .clearfix
+    ==form.start
+    .form-group
+      ==form.username.label.to_tag
+      ==form.username.to_tag
+    .form-group
+      ==form.password.label.to_tag
+      ==form.password.to_tag
+    .form-group.pull-right.padded
+      ==form.giris.to_tag
+    ==form.end
