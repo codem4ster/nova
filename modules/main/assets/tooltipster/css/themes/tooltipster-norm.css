@@ -1,0 +1,44 @@
+/* This is the default Tooltipster theme (feel free to modify or duplicate and create multiple themes!): */
+.tooltipster-norm {
+	border-radius: 5px; 
+	border: 1px solid #000;
+	background: #4c4c4c;
+	color: #fff;
+}
+
+/* Use this next selector to style things like font-size and line-height: */
+.tooltipster-norm .tooltipster-content {
+	font-size: 11px;
+	line-height: 13px;
+	padding: 5px 5px;
+}
+
+/* This is the default Tooltipster theme (feel free to modify or duplicate and create multiple themes!): */
+.tooltipster-facebook {
+	border-radius: 5px; 
+	border: 1px solid #2c2f5f;
+	background: #3B5998;
+	color: #fff;
+}
+
+/* Use this next selector to style things like font-size and line-height: */
+.tooltipster-facebook .tooltipster-content {
+	font-size: 11px;
+	line-height: 13px;
+	padding: 5px 5px;
+}
+
+/* This is the default Tooltipster theme (feel free to modify or duplicate and create multiple themes!): */
+.tooltipster-twitter {
+	border-radius: 5px; 
+	border: 1px solid #0b688c;
+	background: #0BA9D7;
+	color: #fff;
+}
+
+/* Use this next selector to style things like font-size and line-height: */
+.tooltipster-twitter .tooltipster-content {
+	font-size: 11px;
+	line-height: 13px;
+	padding: 5px 5px;
+}

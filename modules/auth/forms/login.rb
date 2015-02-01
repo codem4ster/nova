@@ -8,7 +8,7 @@ class Auth::Forms::Login < Neo::Form
 					validations: {required:{}}},
 				{name: 'password', type: 'password', label:'Şifre :',  attr: {class:''},
 					validations: {required:{}}},
-				{name: 'giris', type: 'submit', value:'Gönder', attr: {class:'btn btn-success'}}
+				{name: 'giris', type: 'submit', value:'Gönder', attr: {class:'button padded pull-right info'}}
 			]
 		)
 	end

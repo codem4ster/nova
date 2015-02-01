@@ -2,15 +2,15 @@ header.padded.center.bordered
   | HEADER
 
 section#login.center.bordered.padded
-  h2 Login
+  h2.title Login
   .clearfix
     ==form.start
-    .form-group
-      ==form.username.label.to_tag
-      ==form.username.to_tag
-    .form-group
-      ==form.password.label.to_tag
-      ==form.password.to_tag
-    .form-group.pull-right.padded
+    .row.padded
+      .one.fifth.small-tablet ==form.username.label.to_tag
+      .four.fifth.small-tablet ==form.username.to_tag
+    .row.padded
+      .one.fifth.small-tablet ==form.password.label.to_tag
+      .four.fifth.small-tablet ==form.password.to_tag
+    .row.padded
       ==form.giris.to_tag
     ==form.end

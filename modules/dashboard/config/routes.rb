@@ -4,9 +4,7 @@ App::Conf.default(
 		login: %w( /login / dashboard:dashboard:login get,post )
 	},
 	assets: [
-		{ action: 'dashboard:dashboard:index',
-			files: %w(#opal /js/dashboard.rb) },
 		{ action: 'dashboard:dashboard:login',
-			files: %w(#opal #groundwork /js/login.rb /css/login.sass) }
+			files: %w(#layout /js/login.rb /css/login.sass) }
 	]
 )
