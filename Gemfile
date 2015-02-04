@@ -1,5 +1,5 @@
 # A sample Gemfile
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'sprockets', '>=2.12.3'
 gem 'tilt'
@@ -10,7 +10,9 @@ gem 'rack'
 gem 'rack-protection'
 gem 'mail'
 gem 'rake'
-gem 'unicorn'
+platforms :ruby do # linux
+  gem 'unicorn'
+end
 gem 'haml-i18n'
 gem 'mime-types'
 gem 'activesupport'
