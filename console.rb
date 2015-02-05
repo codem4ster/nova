@@ -28,7 +28,7 @@ end
 
 Neo::Config.main[:env] = 'dev'
 
-if commands.key?command_name
+if commands.key? command_name
 	require commands[command_name]
 	params = nil
 	params = ARGV[1..-1] if ARGV.length>1

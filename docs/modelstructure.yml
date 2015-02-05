@@ -3,12 +3,12 @@ Auth:
     HasProperties:
       - name
     HasMany:
-      Privilage: Privilage
+      Permission: Permission
       Parent: Role
       User: User
 
 
-  Privilage:
+  Permission:
     HasProperties:
       - name
     HasMany:
@@ -20,7 +20,7 @@ Auth:
       - ip
       - last_action
     HasMany:
-      Privilage: Privilage
+      Permission: Permission
     HasOne:
       Role: Role
 
@@ -57,10 +57,10 @@ Pages:
       - created_at
       - updated_at
     HasMany:
-      SubPageTypeCategory: PageTypeCategory
+      PageTypeSubCategory: PageTypeCategory
       PageType: PageType
     HasOne:
-      ParentPageTypeCategory: PageTypeCategory
+      PageTypeParentCategory: PageTypeCategory
 
   LayoutCategory:
     HasProperties:
@@ -68,9 +68,9 @@ Pages:
       - created_at
       - updated_at
     HasMany:
-      SubLayoutCategory: LayoutCategory
+      LayoutSubCategory: LayoutCategory
     HasOne:
-      ParentLayoutCategory: LayoutCategory
+      LayoutParentCategory: LayoutCategory
 
   Page:
     HasProperties:

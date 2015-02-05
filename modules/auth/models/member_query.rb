@@ -1,7 +1,11 @@
 class Auth::Models::MemberQuery < Auth::Models::UserQuery
 
-  def by_username(username)
-    self.add_where([%w[username = {username}]]).add_parameters username: username
+	def by_username_or_email(username, email)
+		by_username username, 'OR';	by_email email
+	end
+
+  def by_username(username, operator='AND')
+    self.add_where([%w[username = {username}]], operator).add_parameters username: username
   end
 
   def by_email(email)
