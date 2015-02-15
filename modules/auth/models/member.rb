@@ -48,4 +48,24 @@ class Auth::Models::Member < Auth::Models::User
 
 	end
 
+  # Checks and authenticates user with username and password
+  # @return [true,false] true if authentication is successfull
+	def self.authenticate(username, password)
+		member = MemberQuery.new.by_username(username).find_one
+		if member
+			password = Password.new(password)
+			password.salt = member.salt
+			result = password.identical?(member.password)
+			Neo::Params::Session[:member] = member if result
+			result
+		else
+			false
+		end
+	end
+
+  # @return [Member] logged user
+	def self.logged_in
+		Neo::Params::Session[:member]
+	end
+
 end

@@ -1,4 +1,6 @@
 class Auth::Forms::Login < Neo::Form
+	Member = Auth::Models::Member
+
 	def initialize
 		super(
 			name: 'login',
@@ -14,6 +16,8 @@ class Auth::Forms::Login < Neo::Form
 	end
 
 	def authenticate
-		@errors[:form] << Neo.trn('Invalid username or password')
+		is_authed = Member.authenticate(username.value, password.value)
+		@errors[:form] << Neo.trn('Invalid username or password') unless is_authed
+		is_authed
 	end
 end

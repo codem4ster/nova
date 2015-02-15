@@ -1,4 +1,6 @@
 class Dashboard::Controllers::Dashboard < Main::Controllers::Main
+	Member = Auth::Models::Member
+
 	def index_action
 		resp = {}
 		resp[:title]  = "#{@main_title} - Admin Sayfası"
@@ -6,15 +8,19 @@ class Dashboard::Controllers::Dashboard < Main::Controllers::Main
 	end
 
 	def login_action
-		resp = {}
-		resp[:title]  = "#{@main_title} - Giriş Yap"
+		if Member.logged_in
+			redirect path(:home)
+		else
+			resp = {}
+			resp[:title]  = "#{@main_title} - Giriş Yap"
 
-		form = Auth::Forms::Login.new
-		if form.posted? and form.valid?
-			form.authenticate
+			form = Auth::Forms::Login.new
+			if form.posted? and form.valid? and form.authenticate
+				redirect path(:home)
+			else
+				resp[:form] = form
+				render resp
+			end
 		end
-
-		resp[:form] = form
-		render resp
 	end
 end
