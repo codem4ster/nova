@@ -11,7 +11,7 @@ class Dashboard::Controllers::Dashboard < Main::Controllers::Main
 
 		form = Auth::Forms::Login.new
 		if form.posted? and form.valid?
-			'do smt'
+			form.authenticate
 		end
 
 		resp[:form] = form

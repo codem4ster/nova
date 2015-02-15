@@ -4,6 +4,7 @@ header.padded.center.bordered
 section#login.center.bordered.padded
   h2.title Login
   .clearfix
+    ==form.get_errors
     ==form.start
     .row.padded
       .one.fifth.small-tablet ==form.username.label.to_tag

@@ -12,4 +12,8 @@ class Auth::Forms::Login < Neo::Form
 			]
 		)
 	end
+
+	def authenticate
+		@errors[:form] << Neo.trn('Invalid username or password')
+	end
 end
