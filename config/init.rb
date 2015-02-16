@@ -1,5 +1,5 @@
 App::Conf.default(
-  env: 'dev',
+  env: 'prod',
   gem_path: '/home/cm/.rvm/gems/ruby-2.1.4@global/',
   default_module: 'site',
   default_template_engine: 'slim',
@@ -16,7 +16,8 @@ App::Conf.default(
     name: '`>Nova`',
     host: '127.0.0.1',
     port: 7474,
-    auth_key: '725a2651b5c0244f237ace48f8eec946'
+    username: 'neo4j',
+    password: '123456'
   },
   mail: {
     from: 'onurelibol@gmail.com',
