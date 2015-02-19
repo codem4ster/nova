@@ -7,21 +7,11 @@ Auth:
       Parent: Role
       User: User
 
-
   Permission:
     HasProperties:
       - +name
     HasMany:
       User: User
-      Role: Role
-
-  User:
-    HasProperties:
-      - +ip
-      - /last_action
-    HasMany:
-      Permission: Permission
-    HasOne:
       Role: Role
 
   Member:
@@ -38,13 +28,22 @@ Auth:
       - /last_login
       - /signed_at
 
+  User:
+    HasProperties:
+      - +ip
+      - /last_action
+    HasMany:
+      Permission: Permission
+    HasOne:
+      Role: Role
+
 
 Pages:
   PageCategory:
     HasProperties:
-      - name
-      - created_at
-      - updated_at
+      - /name
+      - /created_at
+      - /updated_at
     HasMany:
       PageSubCategory: PageCategory
       Page: Page
@@ -53,9 +52,9 @@ Pages:
 
   PageTypeCategory:
     HasProperties:
-      - name
-      - created_at
-      - updated_at
+      - /name
+      - /created_at
+      - /updated_at
     HasMany:
       PageTypeSubCategory: PageTypeCategory
       PageType: PageType
@@ -64,14 +63,189 @@ Pages:
 
   LayoutCategory:
     HasProperties:
-      - name
-      - created_at
-      - updated_at
+      - /name
+      - /created_at
+      - /updated_at
     HasMany:
       LayoutSubCategory: LayoutCategory
+      Layout: Layout
     HasOne:
       LayoutParentCategory: LayoutCategory
 
+  PageParameter:
+    HasProperties:
+      - /name
+      - /type
+    HasMany:
+      PageValue: PageValue
+
+  PageValue:
+    HasProperties:
+      - content
+    HasOne:
+      PageParameter: PageParameter
+      Page: Page
+
+  PageType:
+    HasProperties:
+      - /name
+      - content
+    HasMany:
+      Page: Page
+      PageParameter: PageParameter
+    HasOne:
+      PageTypeCategory: PageTypeCategory
+
+  Layout:
+    HasProperties:
+      - /name
+      - content
+    HasMany:
+      Page: Page
+      PageParameter: PageParameter
+    HasOne:
+      LayoutCategory: LayoutCategory
+
   Page:
     HasProperties:
-      - name
+      - /name
+      - /title
+      - /description
+      - /published
+      - /created_at
+      - /updated_at
+    HasOne:
+      Layout: Layout
+      PageType: PageType
+      PageCategory: PageCategory
+    HasMany:
+      PageValue: PageValue
+
+Widgets:
+  WidgetCategory:
+    HasProperties:
+      - /name
+      - /created_at
+      - /updated_at
+    HasMany:
+      WidgetSubCategory: WidgetCategory
+      Widget: Widget
+    HasOne:
+      WidgetParentCategory: WidgetCategory
+
+  Widget:
+    HasProperties:
+      - /name
+      - before
+      - content
+      - after
+      - /created_at
+      - /updated_at
+    HasOne:
+      WidgetCategory: WidgetCategory
+
+Models:
+  ModelCategory:
+    HasProperties:
+      - /name
+      - /created_at
+      - /updated_at
+    HasMany:
+      ModelSubCategory: ModelCategory
+      Model: Model
+    HasOne:
+      ModelParentCategory: ModelCategory
+    
+  ModelValue:
+    HasProperties:
+      - /content
+    HasOne:
+      ModelField: ModelField
+    
+  ModelField:
+    HasProperties:
+      - /name
+      - /type
+      - /unique
+      - /required
+    HasOne:
+      RelatedField: ModelField
+    HasMany:
+      RelatedFields: ModelField
+      ModelValue: ModelValue
+    
+  Model:
+    HasProperties:
+      - /name      
+      - /created_at
+      - /updated_at
+    HasMany:
+      ModelField: ModelField
+    
+
+Forms:
+  FormCategory:
+    HasProperties:
+      - /name
+      - /created_at
+      - /updated_at
+    HasMany:
+      FormSubCategory: FormCategory
+      Form: Form
+    HasOne:
+      FormParentCategory: FormCategory
+
+  FormField:
+    HasProperties:
+      - /name
+      - /type
+      - required
+      - max_length
+      - min_length
+      - mask
+      - must_same_with
+    HasOne:
+      Form: Form
+
+  Form:
+    HasProperties:
+      - /name
+      - /type
+      - before
+      - content
+      - after
+    HasMany:
+      FormField: FormField
+    HasOne:
+      FormCategory: FormCategory
+      Model: {Models: Model}
+      
+Assets:  
+  AssetCategory:
+    HasProperties:
+      - /name
+      - /created_at
+      - /updated_at
+    HasMany:
+      AssetSubCategory: AssetCategory
+      Asset: Asset
+    HasOne:
+      AssetParentCategory: AssetCategory
+
+  Asset:
+    HasProperties:
+      - /name
+      - /type
+      - /content
+      - /path
+      - /size
+      - /created_at
+      - /updated_at
+    HasOne:
+      AssetCategory: AssetCategory
+
+ConfigParams:
+  Param:
+    HasProperties:
+      - /name
+      - /value
