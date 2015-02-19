@@ -1,7 +1,7 @@
 Auth:
   Role:
     HasProperties:
-      - name
+      - +name
     HasMany:
       Permission: Permission
       Parent: Role
@@ -10,15 +10,15 @@ Auth:
 
   Permission:
     HasProperties:
-      - name
+      - +name
     HasMany:
       User: User
       Role: Role
 
   User:
     HasProperties:
-      - ip
-      - last_action
+      - +ip
+      - /last_action
     HasMany:
       Permission: Permission
     HasOne:
@@ -26,17 +26,17 @@ Auth:
 
   Member:
     HasProperties:
-      - username
-      - email
-      - password
-      - salt
-      - active
-      - activation_code
-      - pass_requested_at
-      - pass_request_code
+      - +username
+      - +email
+      - /password
+      - /salt
+      - /active
+      - /activation_code
+      - /pass_requested_at
+      - /pass_request_code
       - hidden_answer
-      - last_login
-      - signed_at
+      - /last_login
+      - /signed_at
 
 
 Pages:

@@ -66,6 +66,10 @@ class Auth::Models::Member < Auth::Models::User
   # @return [Member] logged user
 	def self.logged_in
 		Neo::Params::Session[:member]
-	end
+  end
+
+  def self.logout
+    Neo::Params::Session.delete(:member)
+  end
 
 end

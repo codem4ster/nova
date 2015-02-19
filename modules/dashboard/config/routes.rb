@@ -1,7 +1,8 @@
 App::Conf.default(
 	routes: {
 		dashboard: %w( /dashboard / dashboard:dashboard:index get ),
-		login: %w( /login / dashboard:dashboard:login get,post )
+		login: %w( /login / dashboard:dashboard:login get,post ),
+    logout: %w( /logout / dashboard:dashboard:logout get)
 	},
 	assets: [
 		{ action: 'dashboard:dashboard:login',
