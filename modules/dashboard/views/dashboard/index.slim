@@ -1,5 +1,10 @@
--if title.include? 'Admin Sayfası'
-  ==title
--else
-  a
-    | Test
+- @user = Auth::Models::Member.logged_in
+nav.nav.small-tablet
+  ul.pull-right
+    li
+      button
+        ' Hoşgeldiniz #{@user.username} |
+        i.icon-cog
+      ul
+        li: a href="#{Neo.generate_url(:logout)}"
+          | Çıkış Yap

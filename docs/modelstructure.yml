@@ -4,7 +4,6 @@ Auth:
       - +name
     HasMany:
       Permission: Permission
-      Parent: Role
       User: User
 
   Permission:
@@ -95,6 +94,7 @@ Pages:
       PageParameter: PageParameter
     HasOne:
       PageTypeCategory: PageTypeCategory
+      Language: {Languages: Language}
 
   Layout:
     HasProperties:
@@ -105,6 +105,7 @@ Pages:
       PageParameter: PageParameter
     HasOne:
       LayoutCategory: LayoutCategory
+      Language: {Languages: Language}
 
   Page:
     HasProperties:
@@ -144,7 +145,7 @@ Widgets:
     HasOne:
       WidgetCategory: WidgetCategory
 
-Models:
+Entities:
   ModelCategory:
     HasProperties:
       - /name
@@ -218,7 +219,7 @@ Forms:
       FormField: FormField
     HasOne:
       FormCategory: FormCategory
-      Model: {Models: Model}
+      Model: {Entities: Model}
       
 Assets:  
   AssetCategory:
@@ -243,6 +244,25 @@ Assets:
       - /updated_at
     HasOne:
       AssetCategory: AssetCategory
+
+Languages:
+  Language:
+    HasProperties:
+      - +code
+      - /name
+      - flag_image
+      - /active
+    HasMany:
+      Phrase: Phrase
+      PageType: {Pages: PageType}
+      Layout: {Pages: Layout}
+
+  Phrase:
+    HasProperties:
+      - /original
+      - /translated
+    HasOne:
+      Language: Language
 
 ConfigParams:
   Param:

@@ -4,8 +4,8 @@ class Auth::Models::RoleQuery < Neo::Database::ModelQuery
     self.add_where([%w[name = {name}]]).add_parameters name: name
   end
 
-  def parent_of_role(role)
-    self.add_match('role','Role',{id: role.id}, '-[r:HasParent]->n')
+  def role_of_permission(permission)
+    self.add_match('permission','Permission',{id: permission.id}, '-[r:HasRole]->n')
   end
 
   def role_of_user(user)

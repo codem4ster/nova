@@ -2,9 +2,13 @@ class Dashboard::Controllers::Dashboard < Main::Controllers::Main
 	Member = Auth::Models::Member
 
 	def index_action
-		resp = {}
-		resp[:title]  = "#{@main_title} - Admin Sayfası"
-		render resp
+    if Member.logged_in and Member.logged_in.has_role? 'Admin'
+      resp = {}
+      resp[:title]  = "#{@main_title} - Admin Sayfası"
+      render resp
+    else
+      redirect_to path(:login)
+    end
 	end
 
 	def login_action

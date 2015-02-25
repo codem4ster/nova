@@ -6,6 +6,8 @@ App::Conf.default(
 	},
 	assets: [
 		{ action: 'dashboard:dashboard:login',
-			files: %w(#layout /js/login.rb /css/login.sass) }
+			files: %w(#layout /js/login.rb /css/login.sass) },
+    { action: 'dashboard:dashboard:index',
+      files: %w(#layout /js/login.rb /css/index.sass) }
 	]
 )

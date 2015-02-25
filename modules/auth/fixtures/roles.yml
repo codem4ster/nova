@@ -1,0 +1,27 @@
+Auth/Role:
+  admin:
+    name: Admin
+    permission: [ +edit_user, +edit_page, +edit_page_type, +edit_layout ]
+  editor:
+    name: Editor
+    permission: [ +edit_page, +edit_page_type, +edit_layout ]
+  operator:
+    operator: Operator
+    permission: [ +edit_page ]
+  member:
+    member: Member
+    permission: [ +edit_page ]
+
+Auth/Permission:
+  edit_user:
+    name: EditUser
+    role: [ +admin ]
+  edit_page:
+    name: EditPage
+    role: [ +admin, +editor, +operator, +member ]
+  edit_page_type:
+    name: EditPageType
+    role: [ +admin, +editor ]
+  edit_layout:
+    name: EditLayout
+    role: [ +admin, +editor ]
