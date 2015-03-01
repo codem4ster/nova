@@ -1,5 +1,5 @@
 App::Conf.default(
-  env: 'dev',
+  env: 'prod',
   gem_path: '/home/cm/.rvm/gems/ruby-2.1.4@global/',
   default_module: 'site',
   default_template_engine: 'slim',
