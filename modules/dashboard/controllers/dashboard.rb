@@ -1,5 +1,6 @@
 class Dashboard::Controllers::Dashboard < Main::Controllers::Main
 	Member = Auth::Models::Member
+	Role = Auth::Models::Role
 
 	def index_action
     if Member.logged_in and Member.logged_in.has_role? 'Admin'
@@ -32,6 +33,14 @@ class Dashboard::Controllers::Dashboard < Main::Controllers::Main
     Member.logout
     redirect_to path(:home)
   end
+
+	def test_action
+		role = Role.new
+		role.name = 'Member'
+		role.save
+
+		render title: 'OSman'
+	end
 
   private
     def redirect_logged_in_member

@@ -1,17 +1,16 @@
 App::Conf.default(
-  env: 'prod',
-  gem_path: '/home/cm/.rvm/gems/ruby-2.1.4@global/',
+  env: 'dev',
   default_module: 'site',
   default_template_engine: 'slim',
   lang: 'TrTr',
 
   routes: {
-    home: %w( / / site:site:index get ),
-    about_us: %w( /hakkimizda / site:site:about_us get ),
-    contact: %w( /iletisim / site:site:contact get ),
-
-    api: %w( /api / api:api:index get ),
+	  home: {get:'/', to:'site:site:index', position: 0},
+    about_us: {get: '/hakkimizda?/\d+', to:'site:site:about_us'},
+    contact: {[:get,:post]=>'/iletisim', to:'site:site:contact'},
+    api: {get:'//api.site.com', to:'api:api:index', position: :last}
   },
+
   db: {
     name: '`>Nova`',
     host: '127.0.0.1',
@@ -19,6 +18,7 @@ App::Conf.default(
     username: 'neo4j',
     password: '123456'
   },
+
   mail: {
     from: 'onurelibol@gmail.com',
     defaults: {
