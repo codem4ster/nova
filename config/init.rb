@@ -8,7 +8,7 @@ App::Conf.default(
 	  home: {get:'/', to:'site:site:index', position: 0},
     about_us: {get: '/hakkimizda?/\d+', to:'site:site:about_us'},
     contact: {[:get,:post]=>'/iletisim', to:'site:site:contact'},
-    api: {get:'//api.site.com', to:'api:api:index', position: :last}
+    api: {subdomain: 'api', get:'/', to:'api:api:index', position: 99}
   },
 
   db: {
