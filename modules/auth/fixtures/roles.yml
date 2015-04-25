@@ -6,10 +6,10 @@ Auth/Role:
     name: Editor
     permission: [ +edit_page, +edit_page_type, +edit_layout ]
   operator:
-    operator: Operator
+    name: Operator
     permission: [ +edit_page ]
   member:
-    member: Member
+    name: Member
     permission: [ +edit_page ]
 
 Auth/Permission:
