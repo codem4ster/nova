@@ -2,6 +2,7 @@ Auth/Role:
   admin:
     name: Admin
     permission: [ +edit_user, +edit_page, +edit_page_type, +edit_layout ]
+    member: +admin_member
   editor:
     name: Editor
     permission: [ +edit_page, +edit_page_type, +edit_layout ]
@@ -25,3 +26,12 @@ Auth/Permission:
   edit_layout:
     name: EditLayout
     role: [ +admin, +editor ]
+
+Auth/Member:
+  admin_member:
+    username: admin
+    email: admin@local.host
+    active: true
+    password: 8651a9c4063c34273b04d980b9dce9e5
+    salt: 12itg5fw7f1g9wk8f9j8u45xhcpj6edz
+    role: +admin
