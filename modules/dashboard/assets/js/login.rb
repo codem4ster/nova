@@ -1,3 +1,7 @@
+require 'opal'
+require 'opal-jquery'
+
+
 error_map = {
 	'login_username'=> {
 		'display'=>'#login_username', 'position'=>'top'
